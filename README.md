@@ -1,50 +1,174 @@
-# Welcome to your Expo app 👋
+# 📚 Tech Challenge - App de Posts e Usuários (React Native + Expo)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Aplicação mobile/web desenvolvida em **React Native com Expo** consumindo uma API REST.
+O sistema possui autenticação e controle de permissões por perfil (**ALUNO** e **PROFESSOR**), permitindo gerenciamento de posts e usuários.
 
-## Get started
+---
 
-1. Install dependencies
+## 🚀 Tecnologias utilizadas
 
-   ```bash
-   npm install
-   ```
+- React Native
+- Expo
+- TypeScript
+- React Navigation
+- Axios
+- Context API (AuthContext)
 
-2. Start the app
+---
 
-   ```bash
-   npx expo start
-   ```
+## 👥 Perfis do sistema
 
-In the output, you'll find options to open the app in a
+### 👨‍🎓 ALUNO
+- Visualizar lista de posts públicos
+- Abrir detalhes do post
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### 👨‍🏫 PROFESSOR
+- Tudo que o aluno pode fazer
+- Criar posts
+- Editar posts
+- Excluir posts
+- Listar usuários
+- Criar usuários
+- Editar usuários
+- Excluir usuários
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+---
 
-## Get a fresh project
+## 🔐 Autenticação
 
-When you're ready, run:
+O login retorna:
 
-```bash
-npm run reset-project
+```
+{
+  token: string,
+  role: "ALUNO" | "PROFESSOR"
+}
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+O token é armazenado em memória pelo `AuthContext` e enviado automaticamente nas requisições.
 
-## Learn more
+---
 
-To learn more about developing your project with Expo, look at the following resources:
+## 📡 API esperada
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+A aplicação espera uma API rodando em:
 
-## Join the community
+```
+http://localhost:3000
+```
 
-Join our community of developers creating universal apps.
+### Endpoints utilizados
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+#### Auth
+- `POST /auth/login`
+
+#### Posts
+- `GET /posts` → posts públicos
+- `GET /posts/all` → todos (professor)
+- `GET /posts/:id`
+- `POST /posts`
+- `PUT /posts/:id`
+- `DELETE /posts/:id`
+
+#### Usuários
+- `GET /users`
+- `POST /users`
+- `PUT /users/:id`
+- `DELETE /users/:id`
+
+---
+
+## ⚙️ Instalação do projeto
+
+### 1) Clonar repositório
+
+```
+git clone <repo>
+cd app
+```
+
+### 2) Instalar dependências
+
+```
+npm install
+```
+
+### 3) Rodar o projeto
+
+```
+npx expo start
+```
+
+---
+
+## 🌐 Rodando no navegador
+
+Após iniciar, acessar:
+
+```
+http://localhost:8081
+```
+
+> Certifique-se que a API esteja rodando na porta 3000
+
+---
+
+## 📱 Rodando no celular
+
+1. Instalar **Expo Go**
+2. Escanear QR Code
+
+---
+
+## 🧠 Estrutura do projeto
+
+```
+src/
+ ├── contexts/
+ │    └── AuthContext.tsx
+ ├── screens/
+ │    ├── LoginScreen.tsx
+ │    ├── PostsScreen.tsx
+ │    ├── PostDetailsScreen.tsx
+ │    ├── CreatePostScreen.tsx
+ │    ├── UsersScreen.tsx
+ │    └── UserDetailsScreen.tsx
+ ├── services/
+ │    └── api.ts
+ └── routes/
+      └── app.routes.tsx
+```
+
+---
+
+## 🧪 Testes manuais recomendados
+
+### Professor
+- Criar post
+- Editar post
+- Excluir post
+- Criar usuário
+- Editar usuário
+- Excluir usuário
+
+### Aluno
+- Login
+- Visualizar posts
+- Abrir detalhes
+
+---
+
+## 🏁 Status do projeto
+
+✔ Autenticação
+✔ Controle de permissões
+✔ CRUD de Posts
+✔ CRUD de Usuários
+✔ Compatível Web e Mobile
+
+---
+
+## 👨‍💻 Autor
+
+Projeto desenvolvido para o Tech Challenge.
+
