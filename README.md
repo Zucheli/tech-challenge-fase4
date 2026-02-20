@@ -83,8 +83,8 @@ http://localhost:3000
 ### 1) Clonar repositório
 
 ```
-git clone <repo>
-cd app
+git clone https://github.com/Zucheli/tech-challenge-fase4.git
+cd tech-challenge-fase4
 ```
 
 ### 2) Instalar dependências
